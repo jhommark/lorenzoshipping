@@ -9,10 +9,10 @@ use Hash;
 use Cache;
 use Validator;
 
-class AdminSchedulesController extends \crocodicstudio\crudbooster\controllers\CBController {
+class AdminShippingLocationsController extends \crocodicstudio\crudbooster\controllers\CBController {
 
     public function __construct() {
-        $this->table              = "schedules";
+        $this->table              = "shipping_locations";
         $this->primary_key        = "id";
         $this->title_field        = "id";
         $this->limit              = 20;
@@ -26,16 +26,12 @@ class AdminSchedulesController extends \crocodicstudio\crudbooster\controllers\C
         $this->button_import_data = true;
 
         $this->col = array();
-		$this->col[] = array("label"=>"From Port","name"=>"from_port" );
-		$this->col[] = array("label"=>"To Port","name"=>"to_port" );
-		$this->col[] = array("label"=>"Etd","name"=>"etd" );
-		$this->col[] = array("label"=>"Eta","name"=>"eta" );
+		$this->col[] = array("label"=>"Location","name"=>"location" );
+		$this->col[] = array("label"=>"Description","name"=>"description" );
 
 		$this->form = array();
-		$this->form[] = array("label"=>"From Port","name"=>"from_port","type"=>"text","required"=>TRUE,"validation"=>"required|min:3|max:255");
-		$this->form[] = array("label"=>"To Port","name"=>"to_port","type"=>"text","required"=>TRUE,"validation"=>"required|min:3|max:255");
-		$this->form[] = array("label"=>"Etd","name"=>"etd","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s");
-		$this->form[] = array("label"=>"Eta","name"=>"eta","type"=>"datetime","required"=>TRUE,"validation"=>"required|date_format:Y-m-d H:i:s");
+		$this->form[] = array("label"=>"Location","name"=>"location","type"=>"text","required"=>TRUE,"validation"=>"required|min:3|max:255");
+		$this->form[] = array("label"=>"Description","name"=>"description","type"=>"textarea","validation"=>"string|min:5|max:5000");
      
 
         /* 
