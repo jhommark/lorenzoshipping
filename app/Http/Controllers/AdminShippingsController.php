@@ -26,8 +26,8 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
         $this->button_import_data = true;
 
         $this->col = array();
-		$this->col[] = array("label"=>"From Port","name"=>"from_port" );
-		$this->col[] = array("label"=>"To Port","name"=>"to_port" );
+		$this->col[] = array("label"=>"From Port","name"=>"from_port",'join'=>'shipping_locations,location');
+		$this->col[] = array("label"=>"To Port","name"=>"to_port",'join'=>'shipping_locations,location');
 		$this->col[] = array("label"=>"Transit Time","name"=>"transit_time" );
 		$this->col[] = array("label"=>"Notes","name"=>"notes" );
 
@@ -36,9 +36,9 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
 		$this->form[] = array("label"=>"To Port","name"=>"to_port","type"=>"select","required"=>TRUE,"datatable"=>"shipping_locations,location","validation"=>"required");
 		$this->form[] = array("label"=>"Transit Time","name"=>"transit_time","type"=>"text","required"=>TRUE,"validation"=>"required|min:3|max:255");
 		$this->form[] = array("label"=>"Notes","name"=>"notes","type"=>"textarea","validation"=>"string|min:5|max:5000");
-//        $this->form[] = array("label"=>"Services Available","name"=>"id_shipping_services","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_services,name","validation"=>"required");
-//        $this->form[] = array("label"=>"Types of Cargo","name"=>"id_shipping_cargoes","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_cargoes,name","validation"=>"required");
-//        $this->form[] = array("label"=>"Vessels in Service","name"=>"id_shipping_vessels","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_vessels,name","validation"=>"required");
+        $this->form[] = array("label"=>"Services Available","name"=>"id_shipping_services","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_services,name","validation"=>"required");
+        $this->form[] = array("label"=>"Types of Cargo","name"=>"id_shipping_cargoes","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_cargoes,name","validation"=>"required");
+        $this->form[] = array("label"=>"Vessels in Service","name"=>"id_shipping_vessels","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_vessels,name","validation"=>"required");
 
 
         /* 
