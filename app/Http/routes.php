@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'client'], function() {
+    Route::get('/views/{name}', function($name) {
+        return view($name);
+    });
+
+    Route::any('{path?}', function () {
+        return view('client.layouts.master');
+    })->where("path", ".+");
+});

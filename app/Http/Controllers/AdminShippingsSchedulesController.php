@@ -9,10 +9,10 @@ use Hash;
 use Cache;
 use Validator;
 
-class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\CBController {
+class AdminShippingsSchedulesController extends \crocodicstudio\crudbooster\controllers\CBController {
 
     public function __construct() {
-        $this->table              = "shippings";
+        $this->table              = "shippings_schedules";
         $this->primary_key        = "id";
         $this->title_field        = "id";
         $this->limit              = 20;
@@ -26,20 +26,21 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
         $this->button_import_data = true;
 
         $this->col = array();
-		$this->col[] = array("label"=>"From Port","name"=>"from_port",'join'=>'shipping_locations,location');
-		$this->col[] = array("label"=>"To Port","name"=>"to_port",'join'=>'shipping_locations,location');
-		$this->col[] = array("label"=>"Transit Time","name"=>"transit_time" );
-		$this->col[] = array("label"=>"Notes","name"=>"notes" );
+		$this->col[] = array("label"=>"Etd Day","name"=>"etd_day" );
+		$this->col[] = array("label"=>"Etd Time","name"=>"etd_time" );
+		$this->col[] = array("label"=>"Eta Day","name"=>"eta_day" );
+		$this->col[] = array("label"=>"Eta Time","name"=>"eta_time" );
+		$this->col[] = array("label"=>"Remarks","name"=>"remarks" );
+		$this->col[] = array("label"=>"Shippings","name"=>"id_shippings","join"=>"shippings,id");
 
 		$this->form = array();
-		$this->form[] = array("label"=>"From Port","name"=>"from_port","type"=>"select","required"=>TRUE,"datatable"=>"shipping_locations,location","validation"=>"required");
-		$this->form[] = array("label"=>"To Port","name"=>"to_port","type"=>"select","required"=>TRUE,"datatable"=>"shipping_locations,location","validation"=>"required");
-		$this->form[] = array("label"=>"Transit Time","name"=>"transit_time","type"=>"text","required"=>TRUE,"validation"=>"required|min:3|max:255");
-		$this->form[] = array("label"=>"Notes","name"=>"notes","type"=>"textarea","validation"=>"string|min:5|max:5000");
-        $this->form[] = array("label"=>"Services Available","name"=>"services","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_services,name","validation"=>"required");
-        $this->form[] = array("label"=>"Types of Cargo","name"=>"cargoes","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_cargoes,name","validation"=>"required");
-        $this->form[] = array("label"=>"Vessels in Service","name"=>"vessels","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_vessels,name","validation"=>"required");
-
+		$this->form[] = array("label"=>"Etd Day","name"=>"etd_day","type"=>"text","required"=>TRUE,"validation"=>"required|min:3|max:255");
+		$this->form[] = array("label"=>"Etd Time","name"=>"etd_time","type"=>"time","required"=>TRUE,"validation"=>"required|date_format:H:i:s");
+		$this->form[] = array("label"=>"Eta Day","name"=>"eta_day","type"=>"text","required"=>TRUE,"validation"=>"required|min:3|max:255");
+		$this->form[] = array("label"=>"Eta Time","name"=>"eta_time","type"=>"time","required"=>TRUE,"validation"=>"required|date_format:H:i:s");
+		$this->form[] = array("label"=>"Remarks","name"=>"remarks","type"=>"textarea","required"=>TRUE,"validation"=>"required|string|min:5|max:5000");
+		$this->form[] = array("label"=>"Shippings","name"=>"id_shippings","type"=>"select","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"shippings,id");
+     
 
         /* 
         | ---------------------------------------------------------------------- 
@@ -194,7 +195,7 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
     | @arr
     |
     */
-    public function hook_before_add(&$postdata) {
+    public function hook_before_add(&$arr) {        
         //Your code here
 
     }
