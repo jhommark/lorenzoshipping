@@ -1,4 +1,5 @@
 var elixir = require('laravel-elixir');
+require('laravel-elixir-ng-annotate');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,6 +12,31 @@ var elixir = require('laravel-elixir');
  |
  */
 
+var jsPlugins = [
+    '../dep/angular/angular.min.js',
+    '../dep/angular-ui-router/release/angular-ui-router.min.js',
+    '../dep/angular-resource/angular-resource.min.js',
+    '../dep/textAngular/dist/textAngular-rangy.min.js',
+    '../dep/textAngular/dist/textAngular-sanitize.min.js',
+    '../dep/textAngular/dist/textAngular.min.js'
+];
+var cssPlugins = [
+    '../dep/bootstrap/dist/css/bootstrap.min.css',
+    '../dep/textAngular/dist/textAngular.css',
+    '../dep/font-awesome/css/font-awesome.min.css'
+];
+var appScripts = [
+    'client/**/*.modules.js',
+    'client/**/*.js'
+];
+var appSass = [
+    'app.scss'
+];
+
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix.styles(cssPlugins, 'public/client/css/dep.css');
+    mix.sass(appSass, 'public/client/css/app.min.css');
+    mix.annotate(appScripts, 'public/client/js/annotated.js');
+    mix.scripts(jsPlugins, 'public/client/js/dep.js');
+    mix.scripts('../../../public/client/js/annotated.js', 'public/client/js/app.min.js');
 });

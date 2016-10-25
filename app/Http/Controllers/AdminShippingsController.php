@@ -36,9 +36,9 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
 		$this->form[] = array("label"=>"To Port","name"=>"to_port","type"=>"select","required"=>TRUE,"datatable"=>"shipping_locations,location","validation"=>"required");
 		$this->form[] = array("label"=>"Transit Time","name"=>"transit_time","type"=>"text","required"=>TRUE,"validation"=>"required|min:3|max:255");
 		$this->form[] = array("label"=>"Notes","name"=>"notes","type"=>"textarea","validation"=>"string|min:5|max:5000");
-        $this->form[] = array("label"=>"Services Available","name"=>"shipping_services","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_services,name","validation"=>"required");
-        $this->form[] = array("label"=>"Types of Cargo","name"=>"shipping_cargoes","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_cargoes,name","validation"=>"required");
-        $this->form[] = array("label"=>"Vessels in Service","name"=>"shipping_vessels","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_vessels,name","validation"=>"required");
+        $this->form[] = array("label"=>"Services Available","name"=>"services","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_services,name","validation"=>"required");
+        $this->form[] = array("label"=>"Types of Cargo","name"=>"cargoes","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_cargoes,name","validation"=>"required");
+        $this->form[] = array("label"=>"Vessels in Service","name"=>"vessels","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_vessels,name","validation"=>"required");
 
 
         /* 
@@ -196,9 +196,7 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
     */
     public function hook_before_add(&$postdata) {
         //Your code here
-        $postdata['shipping_services'] = htmlspecialchars($postdata['shipping_services']);
-        $postdata['shipping_cargoes'] = htmlspecialchars($postdata['shipping_cargoes']);
-        $postdata['shipping_vessels'] = htmlspecialchars($postdata['shipping_vessels']);
+
     }
 
     /* 
@@ -223,9 +221,7 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
     */
     public function hook_before_edit(&$postdata,$id) {        
         //Your code here
-        $postdata['shipping_services'] = htmlspecialchars($postdata['shipping_services']);
-        $postdata['shipping_cargoes'] = htmlspecialchars($postdata['shipping_cargoes']);
-        $postdata['shipping_vessels'] = htmlspecialchars($postdata['shipping_vessels']);
+
     }
 
     /* 
