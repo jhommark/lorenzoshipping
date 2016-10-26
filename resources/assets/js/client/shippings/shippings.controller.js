@@ -6,34 +6,23 @@
         .module("app.shippings")
         .controller('ShippingController', ShippingController);
 
-    ShippingController.$inject = ['$stateParams', 'Shipping'];
+    ShippingController.$inject = ['$http'];
     /* @ngInject */
-    function ShippingController($stateParams, Shipping) {
+    function ShippingController($http) {
 
         var vm = this;
 
         vm.shippings = {};
-        vm.shipping = {};
 
-        if(!$stateParams.id) { getShippings(); }
-        if($stateParams.id) { getShipping(); }
+        getShippings();
 
         /**
          * Get all
          */
         function getShippings() {
-            Shipping.get(function(res) {
-                vm.shippings = res.data;
+            $http.get('/api/shippings').then(function(res) {
                 vm.ready = true;
-            });
-        }
-
-        /**
-         * find by id
-         */
-        function getShipping() {
-            vm.shipping = Shipping.get({id: $stateParams.id}, function() {
-                vm.ready = true;
+                vm.shippings = res.data.data;
             });
         }
 

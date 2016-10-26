@@ -12,7 +12,7 @@
     function routerHelperProvider($locationProvider, $stateProvider, $urlRouterProvider) {
         /* jshint validthis:true */
         var config = {
-            docTitle: 'Admin',
+            docTitle: 'Client',
             resolveAlways: {}
         };
 
@@ -90,7 +90,7 @@
                     function(event, toState, toParams, fromState, fromParams) {
                         stateCounts.changes++;
                         handlingStateChangeError = false;
-                        var title = (toState.title || '') + ' · ' + config.docTitle;
+                        var title = (toState.title || '') + ' - ' + config.docTitle;
                         $rootScope.mainUrl = $state.current.url.split('/')[2];
                         $rootScope.title = title; // data bind to <title>
                     }

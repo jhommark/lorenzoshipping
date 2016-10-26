@@ -12,7 +12,8 @@
     <!-- users count -->
     <div class="col-md-4 col-sm-12">
         <select>
-            <option ng-repeat="x in vm.shippings">@{{x.transit_time}}</option>
+            <option>---Select Origin---</option>
+            <option ng-repeat="x in vm.shippings">@{{x.from_port}}</option>
         </select>
     </div>
 
