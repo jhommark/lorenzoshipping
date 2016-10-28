@@ -1,2 +1,11 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+#form {
+  > div {
+    margin-bottom: 25px;
+  }
+  > div:last-child {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

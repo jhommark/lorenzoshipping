@@ -23,6 +23,15 @@
                     controllerAs: 'vm',
                     title: 'Shippings'
                 }
+            }, {
+                state: 'schedules',
+                config: {
+                    url: '/client/schedules',
+                    templateUrl: '/client/views/client.schedules.index',
+                    controller: 'ShippingController',
+                    controllerAs: 'vm',
+                    title: 'Schedules'
+                }
             }
         ];
     }
