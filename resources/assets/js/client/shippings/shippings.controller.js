@@ -15,9 +15,11 @@
         vm.fromPort = 0;
         vm.toPort = 0;
         vm.locations = {};
+        vm.schedules = {};
         vm.routeInfo = {};
         vm.getLocations = getLocations;
         vm.getLocationById = getLocationById;
+        vm.getSchedulesByShippingId = getSchedulesByShippingId;
         vm.loadShippingInfo = loadShippingInfo;
         vm.formatList = formatList;
 
@@ -39,6 +41,12 @@
             });
         }
 
+        function getSchedulesByShippingId(id, callback) {
+            $http.get('/api/schedules?id_shippings='+id).then(function(res) {
+                callback(res.data.data);
+            });
+        }
+
         function formatList(list, callback) {
             var chunks = list.split(';');
             callback(chunks);
@@ -53,11 +61,17 @@
                 vm.getLocationById(vm.toPort, function(res) {
                     vm.routeInfo.toPortName = res;
                 });
+                vm.getSchedulesByShippingId(vm.routeInfo.id, function(res) {
+                    vm.schedules = res;
+                });
                 vm.formatList(vm.routeInfo.shipping_services, function(res) {
                     vm.routeInfo.shippingServices = res;
                 });
                 vm.formatList(vm.routeInfo.shipping_cargoes, function(res) {
                     vm.routeInfo.shippingCargoes = res;
+                });
+                vm.formatList(vm.routeInfo.shipping_vessels, function(res) {
+                    vm.routeInfo.shippingVessels = res;
                 });
                 vm.showSchedules = true;
             });
