@@ -50,6 +50,11 @@
                     </div>
                 </div>
                 <div ng-show="vm.showSchedules">
+                    <!-- Image -->
+                    <div class="form-group">
+                        <img ng-src="@{{vm.routeInfo.image}}" width="320" alt="Image" />
+                    </div>
+
                     <!-- From Port -->
                     <div class="form-group">
                         <label>From:</label>
