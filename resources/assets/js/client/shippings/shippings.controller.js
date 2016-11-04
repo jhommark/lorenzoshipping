@@ -53,27 +53,32 @@
         }
 
         function loadShippingInfo() {
+            if(!vm.fromPort.length || !vm.toPort.length) return;
             $http.get('/api/shippings?from_port='+vm.fromPort+'&to_port='+vm.toPort).then(function(res) {
-                vm.routeInfo = res.data.data[0];
-                vm.getLocationById(vm.fromPort, function(res) {
-                    vm.routeInfo.fromPortName = res;
-                });
-                vm.getLocationById(vm.toPort, function(res) {
-                    vm.routeInfo.toPortName = res;
-                });
-                vm.getSchedulesByShippingId(vm.routeInfo.id, function(res) {
-                    vm.schedules = res;
-                });
-                vm.formatList(vm.routeInfo.shipping_services, function(res) {
-                    vm.routeInfo.shippingServices = res;
-                });
-                vm.formatList(vm.routeInfo.shipping_cargoes, function(res) {
-                    vm.routeInfo.shippingCargoes = res;
-                });
-                vm.formatList(vm.routeInfo.shipping_vessels, function(res) {
-                    vm.routeInfo.shippingVessels = res;
-                });
-                vm.showSchedules = true;
+                if(res) {
+                    vm.routeInfo = res.data.data[0];
+                    vm.getLocationById(vm.fromPort, function (res) {
+                        vm.routeInfo.fromPortName = res;
+                    });
+                    vm.getLocationById(vm.toPort, function (res) {
+                        vm.routeInfo.toPortName = res;
+                    });
+                    vm.getSchedulesByShippingId(vm.routeInfo.id, function (res) {
+                        vm.schedules = res;
+                    });
+                    vm.formatList(vm.routeInfo.shipping_services, function (res) {
+                        vm.routeInfo.shippingServices = res;
+                    });
+                    vm.formatList(vm.routeInfo.shipping_cargoes, function (res) {
+                        vm.routeInfo.shippingCargoes = res;
+                    });
+                    vm.formatList(vm.routeInfo.shipping_vessels, function (res) {
+                        vm.routeInfo.shippingVessels = res;
+                    });
+                    vm.showSchedules = true;
+                }
+            }).catch(function(error) {
+                if(error) alert(error);
             });
         }
 
