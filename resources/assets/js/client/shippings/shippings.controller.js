@@ -22,6 +22,7 @@
         vm.getSchedulesByShippingId = getSchedulesByShippingId;
         vm.loadShippingInfo = loadShippingInfo;
         vm.formatList = formatList;
+        vm.goBack = goBack;
 
         vm.getLocations();
 
@@ -50,6 +51,15 @@
         function formatList(list, callback) {
             var chunks = list.split(';');
             callback(chunks);
+        }
+
+        function goBack() {
+            vm.fromPort = 0;
+            vm.toPort = 0;
+            vm.locations = {};
+            vm.schedules = {};
+            vm.routeInfo = {};
+            vm.showSchedules = false;
         }
 
         function loadShippingInfo() {

@@ -145,6 +145,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <button class="btn" ng-click="vm.goBack()">Back</button>
                 </div>
 
             </div> <!-- / panel body -->
