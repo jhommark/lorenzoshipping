@@ -101,7 +101,6 @@
                             <th>Vessels in Service</th>
                             <th>ETD @{{ vm.routeInfo.fromPortName }}</th>
                             <th>ETA @{{ vm.routeInfo.toPortName }}</th>
-                            <th>Remarks</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -143,7 +142,6 @@
                                         </tbody>
                                     </table>
                                 </td>
-                                <td>@{{ }}</td>
                             </tr>
                         </tbody>
                     </table>
