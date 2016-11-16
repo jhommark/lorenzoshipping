@@ -60,6 +60,7 @@
             vm.toPort = 0;
             vm.destinations = [];
             vm.locations = {};
+            vm.getLocations();
             vm.schedules = {};
             vm.routeInfo = {};
             vm.showSchedules = false;
