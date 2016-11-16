@@ -14,6 +14,7 @@
 
         vm.fromPort = 0;
         vm.toPort = 0;
+        vm.destinations = [];
         vm.locations = {};
         vm.schedules = {};
         vm.routeInfo = {};
@@ -21,6 +22,7 @@
         vm.getLocationById = getLocationById;
         vm.getSchedulesByShippingId = getSchedulesByShippingId;
         vm.loadShippingInfo = loadShippingInfo;
+        vm.loadDestinations = loadDestinations;
         vm.formatList = formatList;
         vm.goBack = goBack;
 
@@ -56,10 +58,28 @@
         function goBack() {
             vm.fromPort = 0;
             vm.toPort = 0;
+            vm.destinations = [];
             vm.locations = {};
             vm.schedules = {};
             vm.routeInfo = {};
             vm.showSchedules = false;
+        }
+
+        function loadDestinations() {
+            if(!vm.fromPort.length) return;
+            $http.get('/api/shippings?from_port='+vm.fromPort).then(function(res) {
+                if(res) {
+                    vm.destinations = [];
+                    var destinationsArray = res.data.data;
+                    angular.forEach(destinationsArray, function(value, key) {
+                        vm.getLocationById(destinationsArray[key].to_port, function(res) {
+                            vm.destinations.push({ id: destinationsArray[key].to_port, destination: res });
+                        });
+                    });
+                }
+            }).catch(function(error) {
+                if(error) alert(error);
+            });
         }
 
         function loadShippingInfo() {
@@ -67,22 +87,22 @@
             $http.get('/api/shippings?from_port='+vm.fromPort+'&to_port='+vm.toPort).then(function(res) {
                 if(res) {
                     vm.routeInfo = res.data.data[0];
-                    vm.getLocationById(vm.fromPort, function (res) {
+                    vm.getLocationById(vm.fromPort, function(res) {
                         vm.routeInfo.fromPortName = res;
                     });
-                    vm.getLocationById(vm.toPort, function (res) {
+                    vm.getLocationById(vm.toPort, function(res) {
                         vm.routeInfo.toPortName = res;
                     });
-                    vm.getSchedulesByShippingId(vm.routeInfo.id, function (res) {
+                    vm.getSchedulesByShippingId(vm.routeInfo.id, function(res) {
                         vm.schedules = res;
                     });
-                    vm.formatList(vm.routeInfo.shipping_services, function (res) {
+                    vm.formatList(vm.routeInfo.shipping_services, function(res) {
                         vm.routeInfo.shippingServices = res;
                     });
-                    vm.formatList(vm.routeInfo.shipping_cargoes, function (res) {
+                    vm.formatList(vm.routeInfo.shipping_cargoes, function(res) {
                         vm.routeInfo.shippingCargoes = res;
                     });
-                    vm.formatList(vm.routeInfo.shipping_vessels, function (res) {
+                    vm.formatList(vm.routeInfo.shipping_vessels, function(res) {
                         vm.routeInfo.shippingVessels = res;
                     });
                     vm.showSchedules = true;

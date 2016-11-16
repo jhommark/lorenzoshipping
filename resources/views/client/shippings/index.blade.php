@@ -23,7 +23,7 @@
                     <!-- From Port -->
                     <div class="form-group">
                         <label>From:</label>
-                        <select ng-model="vm.fromPort" class="form-control">
+                        <select ng-model="vm.fromPort" class="form-control" ng-change="vm.loadDestinations()">
                             <option ng-repeat="x in vm.locations" value="@{{x.id}}">@{{ x.location }}</option>
                         </select>
                     </div>
@@ -31,8 +31,8 @@
                     <!-- To Port -->
                     <div class="form-group">
                         <label>To:</label>
-                        <select ng-model="vm.toPort" class="form-control">
-                            <option ng-repeat="x in vm.locations" value="@{{x.id}}">@{{ x.location }}</option>
+                        <select ng-model="vm.toPort" class="form-control" ng-disabled="!vm.destinations || !vm.destinations.length">
+                            <option ng-repeat="y in vm.destinations" value="@{{y.id}}">@{{ y.destination }}</option>
                         </select>
                     </div>
 
