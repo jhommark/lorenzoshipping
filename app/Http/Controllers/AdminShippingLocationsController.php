@@ -26,11 +26,11 @@ class AdminShippingLocationsController extends \crocodicstudio\crudbooster\contr
         $this->button_import_data = true;
 
         $this->col = array();
-		$this->col[] = array("label"=>"Location","name"=>"location" );
+		$this->col[] = array("label"=>"Port","name"=>"location" );
 		$this->col[] = array("label"=>"Description","name"=>"description" );
 
 		$this->form = array();
-		$this->form[] = array("label"=>"Location","name"=>"location","type"=>"text","required"=>TRUE,"validation"=>"required|min:3|max:255");
+		$this->form[] = array("label"=>"Port","name"=>"location","type"=>"text","required"=>TRUE,"validation"=>"required|min:3|max:255");
 		$this->form[] = array("label"=>"Description","name"=>"description","type"=>"textarea","validation"=>"string|min:5|max:5000");
      
 
