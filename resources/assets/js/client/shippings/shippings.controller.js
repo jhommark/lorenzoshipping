@@ -39,13 +39,13 @@
         }
 
         function getLocationById(id, callback) {
-            $http.get('/api/location?id='+id).then(function(res) {
-                callback(res.data.location);
+            $http.get('/api/locations?id='+id).then(function(res) {
+                callback(res.data.data[0].location);
             });
         }
 
         function getSchedulesByShippingId(id, callback) {
-            $http.get('/api/schedules?id_shippings='+id).then(function(res) {
+            $http.get('/api/shippings?id='+id).then(function(res) {
                 callback(res.data.data);
             });
         }
@@ -102,9 +102,6 @@
                     });
                     vm.formatList(vm.routeInfo.shipping_cargoes, function(res) {
                         vm.routeInfo.shippingCargoes = res;
-                    });
-                    vm.formatList(vm.routeInfo.shipping_vessels, function(res) {
-                        vm.routeInfo.shippingVessels = res;
                     });
                     vm.showSchedules = true;
                 }
