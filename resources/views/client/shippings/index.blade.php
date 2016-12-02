@@ -119,7 +119,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr ng-repeat="schedule in vm.schedules | orderBy:'-'">
+                                        <tr ng-repeat="schedule in vm.routeInfo | orderBy:'-'">
                                             <td>@{{ schedule.etd_day }}</td>
                                             <td>@{{ schedule.etd_time | formatTime }}</td>
                                         </tr>
@@ -135,7 +135,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr ng-repeat="schedule in vm.schedules | orderBy:'-'">
+                                        <tr ng-repeat="schedule in vm.routeInfo | orderBy:'-'">
                                             <td>@{{ schedule.eta_day }}</td>
                                             <td>@{{ schedule.eta_time | formatTime }}</td>
                                         </tr>

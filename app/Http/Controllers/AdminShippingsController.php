@@ -30,8 +30,8 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
 		$this->col[] = array("label"=>"Vessel","name"=>"id_shipping_vessels",'join'=>'shipping_vessels,name');
         $this->col[] = array("label"=>"Voyage Number","name"=>"voyage_number");
 		$this->col[] = array("label"=>"From Port","name"=>"from_port",'join'=>'shipping_locations,location');
+        $this->col[] = array("label"=>"ETD","name"=>"etd");
 		$this->col[] = array("label"=>"To Port","name"=>"to_port",'join'=>'shipping_locations,location');
-		$this->col[] = array("label"=>"ETD","name"=>"etd");
 		$this->col[] = array("label"=>"ETA","name"=>"eta");
         $this->col[] = array("label"=>"Transit Time","name"=>"transit_time");
 		$this->col[] = array("label"=>"Notes","name"=>"notes");
@@ -41,8 +41,8 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
         $this->form[] = array("label"=>"Vessel","name"=>"id_shipping_vessels","type"=>"select","required"=>TRUE,"datatable"=>"shipping_vessels,name","validation"=>"required");
         $this->form[] = array("label"=>"Voyage Number","name"=>"voyage_number","type"=>"number","required"=>TRUE,"validation"=>"integer|required");
 		$this->form[] = array("label"=>"From Port","name"=>"from_port","type"=>"select","required"=>TRUE,"datatable"=>"shipping_locations,location","validation"=>"required");
-		$this->form[] = array("label"=>"To Port","name"=>"to_port","type"=>"select","required"=>TRUE,"datatable"=>"shipping_locations,location","validation"=>"required");
-		$this->form[] = array("label"=>"ETD","name"=>"etd","type"=>"datetimepicker","required"=>TRUE,"validation"=>"string|min:3|max:255");
+        $this->form[] = array("label"=>"ETD","name"=>"etd","type"=>"datetimepicker","required"=>TRUE,"validation"=>"string|min:3|max:255");
+        $this->form[] = array("label"=>"To Port","name"=>"to_port","type"=>"select","required"=>TRUE,"datatable"=>"shipping_locations,location","validation"=>"required");
 		$this->form[] = array("label"=>"ETA","name"=>"eta","type"=>"datetimepicker","required"=>TRUE,"validation"=>"string|min:3|max:255");
         $this->form[] = array("label"=>"Transit Time","name"=>"transit_time","type"=>"text","validation"=>"string|min:3|max:255");
         $this->form[] = array("label"=>"Notes","name"=>"notes","type"=>"textarea","validation"=>"string|min:5|max:5000");
