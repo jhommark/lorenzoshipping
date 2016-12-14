@@ -8,7 +8,7 @@
 </div>
 
 <div class="row" ng-show="vm.ready">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-lg-6 col-lg-offset-3">
 
         <div class="panel panel-default">
 
@@ -46,13 +46,13 @@
                     <!-- Submit -->
                     <div class="form_submit">
                         <img ng-show="vm.loading" src='/client/images/preloader.gif' alt='preloader gif'>
-                        <button ng-show="!vm.loading"  ng-click="vm.loadShippingInfo()" class="btn btn-primary pull-right">Submit</button>
+                        <button ng-show="!vm.loading" ng-click="vm.loadShippingInfo()" class="btn btn-primary pull-right">Submit</button>
                     </div>
                 </div>
                 <div ng-show="vm.showSchedules">
                     <!-- Image -->
-                    <div class="form-group">
-                        <img ng-src="@{{vm.routeInfo.image}}" width="320" alt="Image" />
+                    <div class="form-group" ng-show="vm.routeInfo.image">
+                        <img ng-src="@{{ vm.routeInfo.image }}" width="320" alt="Image" />
                     </div>
 
                     <!-- From Port -->
@@ -68,80 +68,46 @@
                     </div>
 
                     <!-- Transit Time -->
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label>Transit Time:</label>
                         <span ng-bind="vm.routeInfo.transit_time"></span>
                     </div>
 
                     <!-- Services Available -->
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label>Services Available:</label>
                         <ul>
                             <li ng-repeat="service in vm.routeInfo.shippingServices">@{{ service }}</li>
                         </ul>
-                    </div>
+                    </div-->
 
                     <!-- Types of Cargo -->
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label>Types of Cargo:</label>
                         <ul>
                             <li ng-repeat="cargo in vm.routeInfo.shippingCargoes">@{{ cargo }}</li>
                         </ul>
-                    </div>
+                    </div-->
 
                     <!-- Notes -->
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label>Notes:</label>
                         <span ng-bind="vm.routeInfo.notes"></span>
-                    </div>
+                    </div-->
 
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" ng-repeat="schedule in vm.schedules">
                         <thead>
                         <tr>
-                            <th>Vessels in Service</th>
-                            <th>ETD @{{ vm.routeInfo.fromPortName }}</th>
-                            <th>ETA @{{ vm.routeInfo.toPortName }}</th>
+                            <th>Vessel</th>
+                            <th>ETD</th>
+                            <th>ETA</th>
                         </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>
-                                    <ul>
-                                        <li ng-repeat="vessel in vm.routeInfo.shippingVessels">@{{ vessel }}</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Day</th>
-                                            <th>Time</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr ng-repeat="schedule in vm.routeInfo | orderBy:'-'">
-                                            <td>@{{ schedule.etd_day }}</td>
-                                            <td>@{{ schedule.etd_time | formatTime }}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                                <td>
-                                    <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Day</th>
-                                            <th>Time</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr ng-repeat="schedule in vm.routeInfo | orderBy:'-'">
-                                            <td>@{{ schedule.eta_day }}</td>
-                                            <td>@{{ schedule.eta_time | formatTime }}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
+                                <td width="30%">@{{ schedule.data[0].shipping_vessels_name+' '+schedule.data[0].voyage_number }}</td>
+                                <td width="35%">@{{ schedule.data[0].etd | formatTime }}</td>
+                                <td width="35%">@{{ schedule.data[0].eta | formatTime }}</td>
                             </tr>
                         </tbody>
                     </table>

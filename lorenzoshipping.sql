@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 02, 2016 at 10:39 AM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.28
+-- Host: 127.0.0.1
+-- Generation Time: Dec 14, 2016 at 03:41 PM
+-- Server version: 5.7.11
+-- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -51,7 +51,8 @@ CREATE TABLE `cms_apicustom` (
 
 INSERT INTO `cms_apicustom` (`id`, `created_at`, `updated_at`, `permalink`, `tabel`, `aksi`, `kolom`, `orderby`, `sub_query_1`, `sql_where`, `nama`, `keterangan`, `parameter`, `method_type`, `parameters`, `responses`) VALUES
 (1, NULL, NULL, 'shippings', 'shippings', 'list', NULL, NULL, NULL, '', 'Shippings', '', NULL, 'get', 'a:3:{i:0;a:5:{s:4:"name";s:2:"id";s:4:"type";s:6:"string";s:6:"config";s:0:"";s:8:"required";s:1:"0";s:4:"used";s:1:"1";}i:1;a:5:{s:4:"name";s:9:"from_port";s:4:"type";s:6:"string";s:6:"config";s:0:"";s:8:"required";s:1:"0";s:4:"used";s:1:"1";}i:2;a:5:{s:4:"name";s:7:"to_port";s:4:"type";s:6:"string";s:6:"config";s:0:"";s:8:"required";s:1:"0";s:4:"used";s:1:"1";}}', 'a:14:{i:0;a:4:{s:4:"name";s:2:"id";s:4:"type";s:3:"int";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:1;a:4:{s:4:"name";s:5:"image";s:4:"type";s:5:"image";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:2;a:4:{s:4:"name";s:9:"from_port";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:3;a:4:{s:4:"name";s:7:"to_port";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:4;a:4:{s:4:"name";s:12:"transit_time";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:5;a:4:{s:4:"name";s:3:"etd";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:6;a:4:{s:4:"name";s:3:"eta";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:7;a:4:{s:4:"name";s:5:"notes";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:8;a:4:{s:4:"name";s:17:"shipping_services";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:9;a:4:{s:4:"name";s:16:"shipping_cargoes";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:10;a:4:{s:4:"name";s:19:"id_shipping_vessels";s:4:"type";s:7:"integer";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:11;a:4:{s:4:"name";s:21:"shipping_vessels_name";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:12;a:4:{s:4:"name";s:28:"shipping_vessels_description";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:13;a:4:{s:4:"name";s:13:"voyage_number";s:4:"type";s:6:"bigint";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}}'),
-(3, NULL, NULL, 'locations', 'shipping_locations', 'list', NULL, NULL, NULL, '', 'Locations', '', NULL, 'get', 'a:1:{i:0;a:5:{s:4:"name";s:2:"id";s:4:"type";s:6:"string";s:6:"config";s:0:"";s:8:"required";s:1:"0";s:4:"used";s:1:"1";}}', 'a:3:{i:0;a:4:{s:4:"name";s:2:"id";s:4:"type";s:3:"int";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:1;a:4:{s:4:"name";s:8:"location";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:2;a:4:{s:4:"name";s:11:"description";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}}');
+(3, NULL, NULL, 'locations', 'shipping_locations', 'list', NULL, NULL, NULL, '', 'Locations', '', NULL, 'get', 'a:1:{i:0;a:5:{s:4:"name";s:2:"id";s:4:"type";s:6:"string";s:6:"config";s:0:"";s:8:"required";s:1:"0";s:4:"used";s:1:"1";}}', 'a:3:{i:0;a:4:{s:4:"name";s:2:"id";s:4:"type";s:3:"int";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:1;a:4:{s:4:"name";s:8:"location";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:2;a:4:{s:4:"name";s:11:"description";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}}'),
+(5, NULL, NULL, 'vessels', 'shipping_vessels', 'list', NULL, NULL, NULL, '', 'Vessels', '', NULL, 'get', 'a:1:{i:0;a:5:{s:4:"name";s:2:"id";s:4:"type";s:6:"string";s:6:"config";s:0:"";s:8:"required";s:1:"0";s:4:"used";s:1:"1";}}', 'a:3:{i:0;a:4:{s:4:"name";s:2:"id";s:4:"type";s:3:"int";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:1;a:4:{s:4:"name";s:4:"name";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}i:2;a:4:{s:4:"name";s:11:"description";s:4:"type";s:6:"string";s:8:"subquery";s:0:"";s:4:"used";s:1:"1";}}');
 
 -- --------------------------------------------------------
 
@@ -182,7 +183,7 @@ INSERT INTO `cms_logs` (`id`, `created_at`, `updated_at`, `ipaddress`, `useragen
 (17, '2016-10-20 07:56:49', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 'http://localhost/lorenzoshipping/public/admin/shipping_vessels/add-save', 'Add new data MORETA VENTURE (MV) at Vessels', 1),
 (18, '2016-10-20 07:56:54', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 'http://localhost/lorenzoshipping/public/admin/shipping_vessels/add-save', 'Add new data MC ENDEAVOR (MCE) at Vessels', 1),
 (19, '2016-10-20 07:57:30', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 'http://localhost/lorenzoshipping/public/admin/shippings/edit-save/1', 'Update data  at Shippings', 1),
-(20, '2016-10-20 07:59:53', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 'http://localhost/lorenzoshipping/public/admin/shipping_cargoes/edit-save/1', 'Update data FCL - (10'' or 20'' vans) at Cargoes', 1),
+(20, '2016-10-20 07:59:53', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 'http://localhost/lorenzoshipping/public/admin/shipping_cargoes/edit-save/1', 'Update data FCL - (10\' or 20\' vans) at Cargoes', 1),
 (21, '2016-10-20 08:00:09', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 'http://localhost/lorenzoshipping/public/admin/shippings/edit-save/1', 'Update data  at Shippings', 1),
 (22, '2016-10-20 08:06:00', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 'http://localhost/lorenzoshipping/public/admin/shippings/edit-save/1', 'Update data  at Shippings', 1),
 (23, '2016-10-20 08:07:12', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36', 'http://localhost/lorenzoshipping/public/admin/shippings/edit-save/1', 'Update data  at Shippings', 1),
@@ -203,7 +204,11 @@ INSERT INTO `cms_logs` (`id`, `created_at`, `updated_at`, `ipaddress`, `useragen
 (38, '2016-12-01 18:33:49', NULL, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36', 'http://localhost:8000/admin/shippings/edit-save/1', 'Update data  at Shippings', 1),
 (39, '2016-12-01 19:06:38', NULL, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36', 'http://localhost:8000/admin/shippings/edit-save/1', 'Update data  at Shippings', 1),
 (40, '2016-12-01 19:08:28', NULL, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36', 'http://localhost:8000/admin/shippings/edit-save/1', 'Update data  at Shippings', 1),
-(41, '2016-12-01 19:09:07', NULL, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36', 'http://localhost:8000/admin/module_generator/sub-module/7/cms_moduls/delete/28', 'Delete data Schedules at Modules', 1);
+(41, '2016-12-01 19:09:07', NULL, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.98 Safari/537.36', 'http://localhost:8000/admin/module_generator/sub-module/7/cms_moduls/delete/28', 'Delete data Schedules at Modules', 1),
+(42, '2016-12-13 05:53:30', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36', 'http://localhost:8000/admin/shippings/add-save', 'Add new data  at Shippings', 1),
+(43, '2016-12-14 05:40:03', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36', 'http://localhost:8000/admin/shippings/edit-save/2', 'Update data  at Shippings', 1),
+(44, '2016-12-14 05:40:16', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36', 'http://localhost:8000/admin/shippings/delete/2', 'Delete data 2 at Shippings', 1),
+(45, '2016-12-14 05:41:05', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36', 'http://localhost:8000/admin/shippings/add-save', 'Add new data  at Shippings', 1);
 
 -- --------------------------------------------------------
 
@@ -455,14 +460,19 @@ INSERT INTO `cms_privileges_roles` (`id`, `created_at`, `updated_at`, `is_visibl
 (42, NULL, NULL, 1, 1, 1, 1, 1, 1, 26),
 (43, NULL, NULL, 1, 1, 1, 1, 1, 1, 26),
 (44, NULL, NULL, 1, 1, 1, 1, 1, 1, 27),
-(59, NULL, NULL, 1, 0, 0, 0, 0, 2, 9),
-(60, NULL, NULL, 1, 0, 0, 0, 0, 2, 10),
-(61, NULL, NULL, 1, 0, 0, 0, 0, 2, 1),
-(62, NULL, NULL, 1, 0, 0, 0, 0, 2, 2),
-(63, NULL, NULL, 1, 0, 0, 0, 0, 2, 3),
-(64, NULL, NULL, 1, 0, 0, 0, 0, 2, 6),
-(65, NULL, NULL, 1, 0, 0, 0, 0, 2, 5),
-(66, NULL, NULL, 1, 1, 1, 1, 1, 1, 28);
+(66, NULL, NULL, 1, 1, 1, 1, 1, 1, 28),
+(67, NULL, NULL, 1, 1, 1, 1, 1, 2, 23),
+(68, NULL, NULL, 1, 0, 0, 0, 0, 2, 9),
+(69, NULL, NULL, 1, 0, 0, 0, 0, 2, 10),
+(70, NULL, NULL, 1, 0, 0, 0, 0, 2, 1),
+(71, NULL, NULL, 1, 1, 1, 1, 1, 2, 25),
+(72, NULL, NULL, 1, 0, 0, 0, 0, 2, 2),
+(73, NULL, NULL, 1, 0, 0, 0, 0, 2, 3),
+(74, NULL, NULL, 1, 1, 1, 1, 1, 2, 24),
+(75, NULL, NULL, 1, 0, 0, 0, 0, 2, 6),
+(76, NULL, NULL, 1, 1, 1, 1, 1, 2, 27),
+(77, NULL, NULL, 1, 0, 0, 0, 0, 2, 5),
+(78, NULL, NULL, 1, 1, 1, 1, 1, 2, 26);
 
 -- --------------------------------------------------------
 
@@ -506,7 +516,7 @@ INSERT INTO `cms_settings` (`id`, `created_at`, `updated_at`, `name`, `content`,
 (16, '2016-10-18 01:36:44', NULL, 'google_api_key', '', 'text', NULL, NULL, 'Application Setting', 'Google API Key'),
 (17, '2016-10-18 01:36:44', NULL, 'google_fcm_key', '', 'text', NULL, NULL, 'Application Setting', 'Google FCM Key'),
 (18, '2016-10-18 01:36:44', NULL, 'register_email_confirmation', '', 'wysiwyg', NULL, 'Input message about email confirmation here, use alias [link_confirmation] to include the link.', 'Email Template', 'Registration Email Confirmation'),
-(19, '2016-10-18 01:36:44', NULL, 'register_email_welcome', '', 'wysiwyg', NULL, 'You can input message after registration is success. Then the message will be send to registrant. use [name] as user ''s name, use [email] as user''s email', 'Email Template', 'Registration Email Welcome');
+(19, '2016-10-18 01:36:44', NULL, 'register_email_welcome', '', 'wysiwyg', NULL, 'You can input message after registration is success. Then the message will be send to registrant. use [name] as user \'s name, use [email] as user\'s email', 'Email Template', 'Registration Email Welcome');
 
 -- --------------------------------------------------------
 
@@ -622,7 +632,8 @@ CREATE TABLE `shippings` (
 --
 
 INSERT INTO `shippings` (`id`, `created_at`, `updated_at`, `image`, `from_port`, `etd`, `to_port`, `eta`, `transit_time`, `notes`, `shipping_services`, `shipping_cargoes`, `id_shipping_vessels`, `voyage_number`) VALUES
-(1, '2016-10-20 01:54:46', '2016-12-01 19:08:28', '', '1', '2016-12-01 22:00:00', '6', '2016-12-05 04:00:00', '22 hours only', 'Testing', ' Pier to Door;Door to Door;Door to Pier;Pier to Pier', 'FCL - (10 or 20 vans);Fruits and Vegetables;Heavy Equipment;LCL', 1, 123);
+(1, '2016-10-20 01:54:46', '2016-12-01 19:08:28', '', '1', '2016-12-01 22:00:00', '6', '2016-12-05 04:00:00', '22 hours only', 'Testing', ' Pier to Door;Door to Door;Door to Pier;Pier to Pier', 'FCL - (10 or 20 vans);Fruits and Vegetables;Heavy Equipment;LCL', 1, 123),
+(3, '2016-12-14 05:41:05', NULL, '', '1', '2016-12-14 01:00:00', '6', '2016-12-30 06:00:00', '', '', '', '', 2, 456);
 
 -- --------------------------------------------------------
 
@@ -911,7 +922,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cms_apicustom`
 --
 ALTER TABLE `cms_apicustom`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `cms_apikey`
 --
@@ -936,7 +947,7 @@ ALTER TABLE `cms_email_queues`
 -- AUTO_INCREMENT for table `cms_logs`
 --
 ALTER TABLE `cms_logs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `cms_menus`
 --
@@ -951,7 +962,7 @@ ALTER TABLE `cms_menus_groups`
 -- AUTO_INCREMENT for table `cms_moduls`
 --
 ALTER TABLE `cms_moduls`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `cms_moduls_group`
 --
@@ -986,7 +997,7 @@ ALTER TABLE `cms_privileges`
 -- AUTO_INCREMENT for table `cms_privileges_roles`
 --
 ALTER TABLE `cms_privileges_roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 --
 -- AUTO_INCREMENT for table `cms_settings`
 --
@@ -1001,7 +1012,7 @@ ALTER TABLE `cms_users`
 -- AUTO_INCREMENT for table `shippings`
 --
 ALTER TABLE `shippings`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `shipping_cargoes`
 --

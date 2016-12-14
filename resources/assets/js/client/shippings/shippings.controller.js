@@ -6,11 +6,12 @@
         .module("app.shippings")
         .controller('ShippingController', ShippingController);
 
-    ShippingController.$inject = ['$http'];
+    ShippingController.$inject = ['$http', 'lodash'];
     /* @ngInject */
-    function ShippingController($http) {
+    function ShippingController($http, lodash) {
 
         var vm = this;
+        var _ = lodash;
 
         vm.fromPort = 0;
         vm.toPort = 0;
@@ -20,9 +21,10 @@
         vm.routeInfo = {};
         vm.getLocations = getLocations;
         vm.getLocationById = getLocationById;
+        vm.getVesselById = getVesselById;
         vm.loadShippingInfo = loadShippingInfo;
         vm.loadDestinations = loadDestinations;
-        vm.formatList = formatList;
+        //vm.formatList = formatList;
         vm.goBack = goBack;
 
         vm.getLocations();
@@ -43,10 +45,16 @@
             });
         }
 
-        function formatList(list, callback) {
+        function getVesselById(id, callback) {
+            $http.get('/api/vessels?id='+id).then(function(res) {
+                callback(res.data.data[0].name);
+            });
+        }
+
+        /*function formatList(list, callback) {
             var chunks = list.split(';');
             callback(chunks);
-        }
+        }*/
 
         function goBack() {
             vm.fromPort = 0;
@@ -64,8 +72,8 @@
             $http.get('/api/shippings?from_port='+vm.fromPort).then(function(res) {
                 if(res) {
                     vm.destinations = [];
-                    var destinationsArray = res.data.data;
-                    angular.forEach(destinationsArray, function(value, key) {
+                    var destinationsArray = _.uniqBy(res.data.data, 'to_port');
+                    _.forEach(destinationsArray, function(value, key) {
                         vm.getLocationById(destinationsArray[key].to_port, function(res) {
                             vm.destinations.push({ id: destinationsArray[key].to_port, destination: res });
                         });
@@ -87,13 +95,21 @@
                     vm.getLocationById(vm.toPort, function(res) {
                         vm.routeInfo.toPortName = res;
                     });
-                    vm.formatList(vm.routeInfo.shipping_services, function(res) {
+                    /*vm.formatList(vm.routeInfo.shipping_services, function(res) {
                         vm.routeInfo.shippingServices = res;
                     });
                     vm.formatList(vm.routeInfo.shipping_cargoes, function(res) {
                         vm.routeInfo.shippingCargoes = res;
-                    });
-                    vm.schedules = res.data.data;
+                    });*/
+                    vm.schedules = _.chain(res.data.data)
+                                    .groupBy('id_shipping_vessels')
+                                    .map(function(value, key) {
+                                        return {
+                                            vessel: key,
+                                            data: value
+                                        };
+                                    })
+                                    .value();
                     vm.showSchedules = true;
                 }
             }).catch(function(error) {

@@ -18,7 +18,9 @@ var jsPlugins = [
     '../dep/angular-resource/angular-resource.min.js',
     '../dep/textAngular/dist/textAngular-rangy.min.js',
     '../dep/textAngular/dist/textAngular-sanitize.min.js',
-    '../dep/textAngular/dist/textAngular.min.js'
+    '../dep/textAngular/dist/textAngular.min.js',
+    '../dep/ng-lodash/build/ng-lodash.min.js',
+    '../dep/moment/min/moment.min.js'
 ];
 var cssPlugins = [
     '../dep/bootstrap/dist/css/bootstrap.min.css',

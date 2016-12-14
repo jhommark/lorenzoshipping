@@ -5,7 +5,8 @@
     angular
         .module('app.core', [
             'ui.router',
-            'ngResource'
+            'ngResource',
+            'ngLodash'
         ]);
 
 }());

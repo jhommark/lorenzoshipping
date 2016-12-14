@@ -33,21 +33,21 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
         $this->col[] = array("label"=>"ETD","name"=>"etd");
 		$this->col[] = array("label"=>"To Port","name"=>"to_port",'join'=>'shipping_locations,location');
 		$this->col[] = array("label"=>"ETA","name"=>"eta");
-        $this->col[] = array("label"=>"Transit Time","name"=>"transit_time");
-		$this->col[] = array("label"=>"Notes","name"=>"notes");
+        //$this->col[] = array("label"=>"Transit Time","name"=>"transit_time");
+		//$this->col[] = array("label"=>"Notes","name"=>"notes");
 
 		$this->form = array();
         $this->form[] = array("label"=>"Image","name"=>"image","type"=>"upload_standard","validation"=>"image");
         $this->form[] = array("label"=>"Vessel","name"=>"id_shipping_vessels","type"=>"select","required"=>TRUE,"datatable"=>"shipping_vessels,name","validation"=>"required");
         $this->form[] = array("label"=>"Voyage Number","name"=>"voyage_number","type"=>"number","required"=>TRUE,"validation"=>"integer|required");
 		$this->form[] = array("label"=>"From Port","name"=>"from_port","type"=>"select","required"=>TRUE,"datatable"=>"shipping_locations,location","validation"=>"required");
-        $this->form[] = array("label"=>"ETD","name"=>"etd","type"=>"datetimepicker","required"=>TRUE,"validation"=>"string|min:3|max:255");
+        $this->form[] = array("label"=>"ETD","name"=>"etd","type"=>"datetimepicker","required"=>TRUE,"validation"=>"string|min:3|max:255|required");
         $this->form[] = array("label"=>"To Port","name"=>"to_port","type"=>"select","required"=>TRUE,"datatable"=>"shipping_locations,location","validation"=>"required");
-		$this->form[] = array("label"=>"ETA","name"=>"eta","type"=>"datetimepicker","required"=>TRUE,"validation"=>"string|min:3|max:255");
-        $this->form[] = array("label"=>"Transit Time","name"=>"transit_time","type"=>"text","validation"=>"string|min:3|max:255");
-        $this->form[] = array("label"=>"Notes","name"=>"notes","type"=>"textarea","validation"=>"string|min:5|max:5000");
-        $this->form[] = array("label"=>"Services Available","name"=>"shipping_services","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_services,name","validation"=>"required");
-        $this->form[] = array("label"=>"Types of Cargo","name"=>"shipping_cargoes","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_cargoes,name","validation"=>"required");
+		$this->form[] = array("label"=>"ETA","name"=>"eta","type"=>"datetimepicker","required"=>TRUE,"validation"=>"string|min:3|max:255|required");
+        //$this->form[] = array("label"=>"Transit Time","name"=>"transit_time","type"=>"text","validation"=>"string|min:3|max:255");
+        //$this->form[] = array("label"=>"Notes","name"=>"notes","type"=>"textarea","validation"=>"string|min:5|max:5000");
+        //$this->form[] = array("label"=>"Services Available","name"=>"shipping_services","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_services,name","validation"=>"required");
+        //w$this->form[] = array("label"=>"Types of Cargo","name"=>"shipping_cargoes","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_cargoes,name","validation"=>"required");
 
 
         /* 
