@@ -26,7 +26,7 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
         $this->button_import_data = true;
 
         $this->col = array();
-        $this->col[] = array("label"=>"Image","name"=>"image","image"=>true);
+        //$this->col[] = array("label"=>"Image","name"=>"image","image"=>true);
 		$this->col[] = array("label"=>"Vessel","name"=>"id_shipping_vessels",'join'=>'shipping_vessels,name');
         $this->col[] = array("label"=>"Voyage Number","name"=>"voyage_number");
 		$this->col[] = array("label"=>"From Port","name"=>"from_port",'join'=>'shipping_locations,location');
@@ -37,7 +37,7 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
 		//$this->col[] = array("label"=>"Notes","name"=>"notes");
 
 		$this->form = array();
-        $this->form[] = array("label"=>"Image","name"=>"image","type"=>"upload_standard","validation"=>"image");
+        //$this->form[] = array("label"=>"Image","name"=>"image","type"=>"upload_standard","validation"=>"image");
         $this->form[] = array("label"=>"Vessel","name"=>"id_shipping_vessels","type"=>"select","required"=>TRUE,"datatable"=>"shipping_vessels,name","validation"=>"required");
         $this->form[] = array("label"=>"Voyage Number","name"=>"voyage_number","type"=>"number","required"=>TRUE,"validation"=>"integer|required");
 		$this->form[] = array("label"=>"From Port","name"=>"from_port","type"=>"select","required"=>TRUE,"datatable"=>"shipping_locations,location","validation"=>"required");
