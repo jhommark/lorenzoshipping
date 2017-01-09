@@ -24,6 +24,7 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
         $this->button_export_data = true;
         $this->button_table_action = true;
         $this->button_import_data = true;
+        $this->max_rows = 10;
 
         $this->col = array();
         //$this->col[] = array("label"=>"Image","name"=>"image","image"=>true);
@@ -40,10 +41,12 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
         //$this->form[] = array("label"=>"Image","name"=>"image","type"=>"upload_standard","validation"=>"image");
         $this->form[] = array("label"=>"Vessel","name"=>"id_shipping_vessels","type"=>"select","required"=>TRUE,"datatable"=>"shipping_vessels,name","validation"=>"required");
         $this->form[] = array("label"=>"Voyage Number","name"=>"voyage_number","type"=>"number","required"=>TRUE,"validation"=>"integer|required");
-		$this->form[] = array("label"=>"From Port","name"=>"from_port","type"=>"select","required"=>TRUE,"datatable"=>"shipping_locations,location","validation"=>"required");
-        $this->form[] = array("label"=>"ETD","name"=>"etd","type"=>"datetimepicker","required"=>TRUE,"validation"=>"string|min:3|max:255|required");
-        $this->form[] = array("label"=>"To Port","name"=>"to_port","type"=>"select","required"=>TRUE,"datatable"=>"shipping_locations,location","validation"=>"required");
-		$this->form[] = array("label"=>"ETA","name"=>"eta","type"=>"datetimepicker","required"=>TRUE,"validation"=>"string|min:3|max:255|required");
+        for($i=0;$i<$this->max_rows;$i++) {
+            $this->form[] = array("label" => "From Port", "name" => "from_port[]", "type" => "select", "datatable" => "shipping_locations,location", "style" => "width: 25%; float: left; position: relative; min-height: 1px; padding-right: 15px;");
+            $this->form[] = array("label" => "ETD", "name" => "etd[]", "type" => "datetimepicker", "validation" => "string|min:3|max:255", "style" => "width: 25%; float: left; position: relative; min-height: 1px; padding-right: 15px; padding-left: 15px;");
+            $this->form[] = array("label" => "To Port", "name" => "to_port[]", "type" => "select", "datatable" => "shipping_locations,location", "validation" => "required", "style" => "width: 25%; float: left; position: relative; min-height: 1px; padding-right: 15px; padding-left: 15px;");
+            $this->form[] = array("label" => "ETA", "name" => "eta[]", "type" => "datetimepicker", "validation" => "string|min:3|max:255", "style" => "width: 25%; float: left; position: relative; min-height: 1px; padding-left: 15px;");
+        }
         //$this->form[] = array("label"=>"Transit Time","name"=>"transit_time","type"=>"text","validation"=>"string|min:3|max:255");
         //$this->form[] = array("label"=>"Notes","name"=>"notes","type"=>"textarea","validation"=>"string|min:5|max:5000");
         //$this->form[] = array("label"=>"Services Available","name"=>"shipping_services","type"=>"checkbox","required"=>TRUE,"datatable"=>"shipping_services,name","validation"=>"required");
@@ -149,7 +152,7 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
         | $this->script_js = "function() { ... }";
         |
         */
-        $this->script_js = NULL;
+        $this->script_js = 'vendor/crudbooster/assets/js/shippings.js';
 
 
 
@@ -179,7 +182,7 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
     */
     public function hook_query_index(&$query) {
         //Your code here
-            
+
     }
 
     /*
@@ -205,7 +208,22 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
     */
     public function hook_before_add(&$postdata) {
         //Your code here
-
+        $data = array();
+        $data['id_shipping_vessels'] = g('id_shipping_vessels');
+        $data['voyage_number'] = g('voyage_number');
+        $from_port = g('from_port');
+        $etd = g('etd');
+        $to_port = g('to_port');
+        $eta = g('eta');
+        for($i=0;$i<=count($from_port);$i++) {
+            if($from_port[$i]) {
+                $data['from_port'] = $from_port[$i];
+                $data['etd'] = $etd[$i];
+                $data['to_port'] = $to_port[$i];
+                $data['eta'] = $eta[$i];
+                DB::table('shippings')->insert($data);
+            }
+        }
     }
 
     /* 
@@ -217,7 +235,7 @@ class AdminShippingsController extends \crocodicstudio\crudbooster\controllers\C
     */
     public function hook_after_add($id) {        
         //Your code here
-
+        DB::table('shippings')->where('id', $id)->delete();
     }
 
     /* 
