@@ -312,6 +312,12 @@ $(function(){
 		$("#table_dashboard .checkbox").prop("checked",!is_checked).trigger("click");
 	})
 
+	$("#btn_add_new_data").click(function() {
+		$(this).attr('href', function() {
+			return this.href + '?multiple=true';
+		});
+	})
+
 	$(".btn-delete-selected").click(function() {
 		var is_any_checked = $("#table_dashboard .checkbox:checked").length;
 		if(is_any_checked) {
